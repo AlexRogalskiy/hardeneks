@@ -13,7 +13,7 @@ class use_encryption_with_aws_load_balancers(Rule):
         offenders = []
         for service in namespaced_resources.services:
             annotations = service.metadata.annotations
-            if service.spec.type == 'LoadBalancer' and annotations:
+            if service.spec.type == "LoadBalancer" and annotations:
                 ssl_cert = (
                     "service.beta.kubernetes.io/aws-load-balancer-ssl-cert"
                     in annotations
@@ -25,10 +25,10 @@ class use_encryption_with_aws_load_balancers(Rule):
                     offenders.append(service)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Service",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,

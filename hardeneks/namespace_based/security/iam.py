@@ -51,10 +51,10 @@ class disable_service_account_token_mounts(Rule):
                 offenders.append(pod)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
@@ -78,7 +78,7 @@ class disable_run_as_root_user(Rule):
         for pod in namespaced_resources.pods:
             security_context = pod.spec.security_context
             containers = pod.spec.containers
-            
+
             if (
                 not security_context.run_as_group
                 and not security_context.run_as_user
@@ -90,13 +90,13 @@ class disable_run_as_root_user(Rule):
                         run_as_user = security_context.run_as_user
                     except AttributeError:
                         offenders.append(pod)
-                
+
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
         )
-        
+
         if offenders:
             self.result = Result(
                 status=False,
@@ -130,7 +130,7 @@ class disable_anonymous_access_for_roles(Rule):
             status=True,
             resource_type="RoleBinding",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
@@ -212,7 +212,7 @@ class use_dedicated_service_accounts_for_each_stateful_set(
             status=True,
             resource_type="StatefulSet",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
@@ -251,10 +251,10 @@ class use_dedicated_service_accounts_for_each_daemon_set(
                     offenders.append(deployment)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="DaemonSet",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
