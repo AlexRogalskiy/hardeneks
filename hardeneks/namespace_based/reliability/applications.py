@@ -17,9 +17,9 @@ class avoid_running_singleton_pods(Rule):
                 offenders.append(pod)
 
         self.result = Result(
-            status=True, 
-            resource_type="Pod", 
-            namespace=namespaced_resources.namespace
+            status=True,
+            resource_type="Pod",
+            namespace=namespaced_resources.namespace,
         )
         if offenders:
             self.result = Result(
@@ -46,9 +46,9 @@ class run_multiple_replicas(Rule):
                 offenders.append(deployment)
 
         self.result = Result(
-            status=True, 
-            resource_type="Deployment", 
-            namespace=namespaced_resources.namespace
+            status=True,
+            resource_type="Deployment",
+            namespace=namespaced_resources.namespace,
         )
         if offenders:
             self.result = Result(
@@ -82,9 +82,9 @@ class schedule_replicas_across_nodes(Rule):
                     offenders.append(deployment)
 
         self.result = Result(
-            status=True, 
-            resource_type="Deployment", 
-            namespace=namespaced_resources.namespace
+            status=True,
+            resource_type="Deployment",
+            namespace=namespaced_resources.namespace,
         )
         if offenders:
             self.result = Result(
@@ -115,7 +115,7 @@ class check_horizontal_pod_autoscaling_exists(Rule):
                 offenders.append(deployment)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Deployment",
             namespace=namespaced_resources.namespace,
         )
@@ -178,7 +178,7 @@ class check_liveness_probes(Rule):
             status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
