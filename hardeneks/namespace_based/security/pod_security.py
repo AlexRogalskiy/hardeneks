@@ -24,10 +24,10 @@ class disallow_container_socket_mount(Rule):
                     offenders.append(pod)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
@@ -54,10 +54,10 @@ class disallow_host_path_or_make_it_read_only(Rule):
                     offenders.append(pod)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
@@ -86,10 +86,10 @@ class set_requests_limits_for_containers(Rule):
                     offenders.append(pod)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
@@ -119,10 +119,10 @@ class disallow_privilege_escalation(Rule):
                     offenders.append(pod)
 
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,
@@ -150,10 +150,10 @@ class check_read_only_root_file_system(Rule):
                 ):
                     offenders.append(pod)
         self.result = Result(
-            status=True, 
+            status=True,
             resource_type="Pod",
             namespace=namespaced_resources.namespace,
-            )
+        )
         if offenders:
             self.result = Result(
                 status=False,

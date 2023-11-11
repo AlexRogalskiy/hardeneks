@@ -178,7 +178,7 @@ def test_disable_run_as_root_user_container(namespaced_resources):
 
     assert "good" not in rule.result.resources
     assert "bad" in rule.result.resources
-    
+
 
 @pytest.mark.parametrize(
     "namespaced_resources",
